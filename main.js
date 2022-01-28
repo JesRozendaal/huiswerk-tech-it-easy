@@ -278,3 +278,49 @@ console.log(toBeSoldTvs);
 
 const paragraph3 = document.getElementById("to-be-sold-tvs");
 paragraph3.textContent = `Het aantal tv's dat  nog verkocht moet worden is ${toBeSoldTvs}.`;
+
+// opdracht 3a
+// Gebruik een array-methode om alle tv merken (zoals Philips, NIKKEI, etc.) in een lijst op de pagina weer te geven.
+// Zorg ervoor dat dit ook zou werken als we 200 tv's in onze array zouden hebben staan. Dat er dubbele namen in zitten, is niet erg.
+
+// 1. Maak een element in HTML die je als container kan gebruiken.
+// 2. Haal dat element naar je js file.
+// 3. Ga door de array heen.
+// 4. Maak voor elke iteratie een list-element.
+// 5. Stop de tv naam in dat element.
+// 6. Voeg het resultaat toe aan de container.
+
+const brandOfTvs = document.getElementById("brand-of-tvs");
+
+inventory.map((listTv) => {
+  const newList = document.createElement("li");
+  newList.textContent = listTv.brand;
+  return brandOfTvs.appendChild(newList);
+});
+
+// opdracht 3b
+//Schrijf de code uit 3a om naar een functie die een array met tv-objecten verwacht.
+// Het is handig om onze scripts als functies op te zetten, zodat we ze gemakkelijk kunnen hergebruiken. Tip: vergeet deze functie -declaratie niet aan te roepen!
+
+// 1. Maak een functie.
+// 2. Schrijf de logica van 3a in de functie.
+// 3. Roep de functie aan
+
+function List(array) {
+  const brands = document.getElementById("brand-of-tvs");
+
+  array.map((listTv) => {
+    const newList = document.createElement("li");
+    newList.textContent = listTv.brand;
+    return brands.appendChild(newList);
+  })
+}
+
+List(inventory);
+
+// opdracht 4a
+// Zorg ervoor dat er een string wordt gegenereerd voor de naam van een tv.
+// Maak een functie die één enkel tv-object (zoals inventory[0] of inventory[6]) verwacht en de naam op de volgende manier samenvoegt:
+// [merk] [type] - [naam] zoals Philips 43PUS6504/12 - 4K TV of NIKKEI NH3216SMART - HD smart TV.
+// Test of jouw functie ook werkt wanneer er een ander tv object wordt meegegeven.
+
