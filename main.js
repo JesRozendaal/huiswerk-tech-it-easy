@@ -163,27 +163,118 @@ const inventory = [
 ];
 
 // opdracht 1a
+
+// 1. Loop door de array heen.
+// 2. Haal bij iedere iteratie de name uit de array.
+// 3. Het resultaat loggen.
+
 const typeOfTvs = inventory.map((typeOfTv) => {
-  return typeOfTv.type;
+  return typeOfTv.name;
 });
 console.log(typeOfTvs);
 
 //opdracht 1b
+
+// 1. Loop door de array heen.
+// 2. Controleer bij iedere iteratie of een tv is uitverkocht.
+// 3. Een tv is uitverkocht als originalStock - sold = 0.
+// 4. Het resultaat loggen.
+
 const soldOutTvs = inventory.filter((soldOutTv) => {
   return soldOutTv.originalStock - soldOutTv.sold === 0;
 });
 console.log(soldOutTvs);
 
 //opdracht 1c
-const ambilightTvs = inventory.filter((ambilightTv) => {
-  return ambilightTv.options.ambiLight === true;
+
+// 1. Via een array-methode alle tv's verzamelen die over ambilight beschikken.
+// 2. Het resultaat loggen.
+
+const ambiLightTvs = inventory.filter((ambiLightTv) => {
+  return ambiLightTv.options.ambiLight === true;
 });
-console.log(ambilightTvs);
+console.log(ambiLightTvs);
 
 //opdracht 1d
+
+// 1. Loop door de array heen.
+// 2. De prijs moet van hoog naar laag gesorteerd worden.
+// 3. Plaats de tv met een hogere prijs voor de tv met een lagere prijs.
+// 4. Het resultaat loggen.
+
 inventory.sort((a,b) => {
   return a.price -b.price;
 });
 console.log(inventory);
 
 //opdracht 2a
+
+// 1. Maak een variabele aan waar alle tv's in die verkocht zijn opgeslagen worden.
+// 2. Loop door de array heen.
+// 3. Tel alle verkochte tv's bij elkaar op.
+// 4. Het resultaat loggen.
+
+let soldTvs = 0
+
+for (let i = 0; i < inventory.length; i++) {
+  soldTvs = soldTvs + inventory[i].sold;
+}
+
+console.log(soldTvs);
+
+//opdracht 2b
+// Zorg ervoor dat dit aantal in het groen wordt weergegeven op de pagina.
+
+// 1. Maak een element in HTML die je als container kunnen gebruiken.
+// 2. Haal dat element naar je js file.
+// 3. Maak in je js file nieuwe elementen om de waarde in op te slaan.
+// 4. Koppel deze aan de container die je hebt gemaakt en binnengehaald in de file.
+// 5. Geef dit styling.
+
+const paragraph = document.getElementById("sold-tvs");
+paragraph.textContent = `Het aantal verkochte televisies is ${soldTvs}.`;
+
+// opdracht 2c
+// Hoeveel tv's heeft Tech It Easy ingekocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
+
+// 1. Maak een variabele waarin alle ingekochte tv's worden opgeslagen.
+// 2. Loop door de array heen.
+// 3. Tel alle ingekochte tv's bij elkaar op.
+// 4. Het resultaat loggen.
+
+let boughtInTvs = 0
+
+for (let i = 0; i < inventory.length; i++) {
+  boughtInTvs = boughtInTvs + inventory[i].originalStock;
+}
+
+console.log(boughtInTvs);
+
+// opdracht 2d
+//Zorg ervoor dat dit aantal in het blauw wordt weergegeven op de pagina.
+
+// 1. Maak een element in HTML die je als container kunnen gebruiken.
+// 2. Haal dat element naar je js file.
+// 3. Maak in je js file nieuwe elementen om de waarde in op te slaan.
+// 4. Koppel deze aan de container die je hebt gemaakt en binnengehaald in de file.
+// 5. Geef dit styling.
+
+const paragraph2 = document.getElementById("bought-in-tvs");
+paragraph2.textContent = `Het aantal ingekochte tv's is ${boughtInTvs}.`;
+
+// opdracht 2e
+// Geef in het rood weer hoeveel tv's er nog verkocht moeten worden.
+
+// 1. Maak een variabele aan voor het aantal nog te verkopen tv's.
+// 2. Log het resultaat om te controleren of het klopt.
+// 3. Maak een element in HTML die je als container kunnen gebruiken.
+// 4. Haal dat element naar je js file.
+// 5. Maak in je js file nieuwe elementen om de waarde in op te slaan.
+// 6. Koppel deze aan de container die je hebt gemaakt en binnengehaald in de file.
+// 7. Geef dit styling.
+
+const toBeSoldTvs = boughtInTvs - soldTvs;
+console.log(toBeSoldTvs);
+
+const paragraph3 = document.getElementById("to-be-sold-tvs");
+paragraph3.textContent = `Het aantal tv's dat  nog verkocht moet worden is ${toBeSoldTvs}.`;
